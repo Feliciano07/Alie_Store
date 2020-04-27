@@ -3,12 +3,10 @@ import {Request, Response} from 'express';
 class IndexController{
 
     public index(req: Request, res: Response){
-        res.json({
-            text: 'API is start'
-        })
+        res.send('<h1>Hello world</h1>');
     }
 
 }
 
 export const indexController =new IndexController();
-//export
+

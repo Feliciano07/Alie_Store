@@ -186,3 +186,7 @@ function db2(){
            }
         }
     }
+    return connection;
+}
+
+export default {db2:db2};

@@ -13,7 +13,7 @@ CREATE TABLE TIPO_USUARIO (
     CONSTRAINT tipo_usuario_pk PRIMARY KEY(id_tipo_usuario)
 );
 
-Describe TIPO_USUARIO;
+-- Describe TIPO_USUARIO;
 
 
 CREATE TABLE USUARIO (
@@ -31,18 +31,16 @@ CREATE TABLE USUARIO (
     ganancia                      INTEGER NOT NULL,
     clase_cliente                 INTEGER NOT NULL,
     genero                        INTEGER NOT NULL,
+    status                        INTEGER DEFAULT 0 NOT NULL ,
     tipo_usuario                  INTEGER NOT NULL,
     CONSTRAINT usuario_pk PRIMARY KEY(id_usuario),
     CONSTRAINT usuario_fk FOREIGN KEY(tipo_usuario) REFERENCES TIPO_USUARIO(id_tipo_usuario)
 );
-Describe USUARIO;
 
---cuando ya existe los triger
--- DROP SEQUENCE AUTOUSER;
--- DROP TRIGGER TRIG_USER;
 
 
 -- SE CREA EL AUTO INCREMENTABLE PARA LA TABLA USUARIO
+
 CREATE SEQUENCE AUTOUSER
 START WITH 1
 INCREMENT BY 1;
@@ -61,19 +59,23 @@ END;
 CREATE TABLE SALA (
     id_sala      INTEGER NOT NULL,
     fecha_hora   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    puntuacion   INTEGER NOT NULL,
-    estado_sala  CHAR(1) NOT NULL, -- 0 sin solucion 1 solucionada
-    CONSTRAINT sala_pk PRIMARY KEY (id_sala)
+    puntuacion   INTEGER DEFAULT 0 NOT NULL,
+    estado_sala  INTEGER DEFAULT 0 NOT NULL, -- 0 sin solucion 1 solucionada
+    usuario_cliente INTEGER not NULL,
+    usuario_ayuda   INTEGER NOT NULL,
+    CONSTRAINT sala_pk PRIMARY KEY (id_sala),
+    CONSTRAINT usuario_fk1 FOREIGN KEY(usuario_cliente) REFERENCES USUARIO(id_usuario),
+    CONSTRAINT usuario_fk2 FOREIGN KEY(usuario_ayuda) REFERENCES USUARIO(id_usuario)
 );
 
-Describe SALA;
+--Describe SALA;
 
-/*
-DROP SEQUENCE AUTOSALA;
-DROP TRIGGER TRIG_SALA;
-*/
+
+
+
 
 --creacion de secuencia de sala 
+
 CREATE SEQUENCE AUTOSALA
 START WITH 1
 INCREMENT BY 1;
@@ -86,34 +88,8 @@ BEGIN
 SELECT AUTOSALA.NEXTVAL INTO :NEW.id_sala FROM DUAL;
 END;
 
---CREACION DE SALA_USUARIO 
-
-CREATE TABLE SALA_USUARIO (
-    id_sala_usuario     INTEGER NOT NULL,
-    sala        INTEGER NOT NULL,
-    usuario  INTEGER NOT NULL,
-    CONSTRAINT sala_usuario_pk PRIMARY KEY(id_sala_usuario),
-    CONSTRAINT sala_fk FOREIGN KEY(sala) REFERENCES SALA(id_sala),
-    CONSTRAINT s_usuario_fk FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario)
-);
-
-DESCRIBE SALA_USUARIO;
 
 
-    DROP SEQUENCE AUTO_SALA_USUARIO;
-    DROP TRIGGER TRIG_SALA_USUARIO;
-
---creacio de autoincrement de sala_usuario 
-CREATE SEQUENCE AUTO_SALA_USUARIO
-START WITH 1
-INCREMENT BY 1;
-
-CREATE TRIGGER TRIG_SALA_USUARIO
-BEFORE INSERT ON SALA_USUARIO
-FOR EACH ROW
-BEGIN
-SELECT AUTO_SALA_USUARIO.NEXTVAL INTO :NEW.id_sala_usuario FROM DUAL;
-END;
 
 
 --creacion de tabla de mensajes 
@@ -130,11 +106,9 @@ CREATE TABLE MENSAJE (
     CONSTRAINT m_usuario_fk FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario)
 );
 
-DESCRIBE MENSAJE;
-/*
-    DROP SEQUENCE AUTO_MENSAJE;
-    DROP TRIGGER TRIG_MENSAJE;
-*/
+--DESCRIBE MENSAJE;
+
+
 
 CREATE SEQUENCE AUTO_MENSAJE
 START WITH 1
