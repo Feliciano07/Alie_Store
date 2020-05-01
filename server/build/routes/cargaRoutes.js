@@ -16,6 +16,7 @@ class CargaRoutes {
     config() {
         this.router.get('/', cargaController_1.cargaController.carga);
         this.router.post('/foto', this.upload.single('foto'), cargaController_1.cargaController.cargarFoto);
+        this.router.post('/productos', cargaController_1.cargaController.Cargar_Productos);
     }
     configUpload() {
         let storage = multer_1.default.diskStorage({

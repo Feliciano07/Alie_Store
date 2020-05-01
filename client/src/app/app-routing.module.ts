@@ -15,6 +15,7 @@ import { RecuperacionComponent } from './components/recuperacion/recuperacion.co
 import { ListarUserComponent } from './components/listar-user/listar-user.component';
 import { CrearUserComponent } from './components/crear-user/crear-user.component';
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
+import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'cargaCliente',
     component: CargaClienteComponent
+  },
+  {
+    path: 'verProductos',
+    component: VerProductosComponent
   }
 ];
 

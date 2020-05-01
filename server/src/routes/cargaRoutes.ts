@@ -23,6 +23,8 @@ class CargaRoutes{
         this.router.get('/', cargaController.carga);
         this.router.post('/foto',this.upload.single('foto'),cargaController.cargarFoto);
 
+        this.router.post('/productos',cargaController.Cargar_Productos);
+
     }
 
     configUpload(){

@@ -15,4 +15,8 @@ export class CargaArchivosService {
     return this.http.post(`${this.API_URI}/foto`, data);
   }
 
+  Subir_Productos(data){
+    return this.http.post(`${this.API_URI}/productos`, data);
+  }
+
 }

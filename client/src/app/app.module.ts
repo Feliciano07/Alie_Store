@@ -35,6 +35,7 @@ import { CrearUserComponent } from './components/crear-user/crear-user.component
 import { AdminService } from './services/admin.service';
 import { CargaArchivosService } from './services/carga-archivos.service';
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
+import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.
     RecuperacionComponent,
     ListarUserComponent,
     CrearUserComponent,
-    CargaClienteComponent
+    CargaClienteComponent,
+    VerProductosComponent
   ],
   imports: [
     BrowserModule,
