@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     clave: ''
   };
 
-  userLogin: Usuario;
+  userLogin: any;
 
   constructor(private usuarioService: UsuarioService, private tosastr: ToastrService, private router: Router) {
 
@@ -38,7 +38,11 @@ export class LoginComponent implements OnInit {
           // this.tosastr.success('Session Iniciada', 'Informacion');
           this.userLogin = res;
           sessionStorage.setItem('user', JSON.stringify(this.userLogin));
-          this.router.navigate(['/cliente']);
+          if  (this.userLogin.TIPO_USUARIO === 0){
+            this.router.navigate(['/admin']);
+          }else{
+            this.router.navigate(['/cliente']);
+          }
 
       },
       err => {
@@ -46,6 +50,10 @@ export class LoginComponent implements OnInit {
         this.tosastr.warning('Credenciales invalidas', 'Atencion');
       }
     );
+  }
+
+  Recuperar(){
+    this.router.navigate(['/recuperar']);
   }
 
 }

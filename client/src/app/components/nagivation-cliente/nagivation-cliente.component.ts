@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
-import {Usuario} from '../../models/Usuario';
+import {AdminService} from '../../services/admin.service';
+
+
+import {ToastrService} from 'ngx-toastr';
+
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 @Component({
   selector: 'app-nagivation-cliente',
@@ -12,14 +18,15 @@ export class NagivationClienteComponent implements OnInit {
 
   userSession: any ; // contiene informacion usuario
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private adminService: AdminService, private toast: ToastrService
+    // tslint:disable-next-line:align
+    , private usuarioService: UsuarioService) {
 
   }
 
   ngOnInit(): void {
     this.userSession = JSON.parse(sessionStorage.getItem('user'));
   }
-
 
 
 }

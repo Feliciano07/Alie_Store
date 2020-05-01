@@ -21,6 +21,8 @@ class UserRoutes{
         this.router.get('/status/:correo',userController.UpdateStatus);
 
         this.router.post('/login',userController.Login);
+
+        this.router.post('/recuperacion', userController.Recuperar_Pass);
     }
 }
 

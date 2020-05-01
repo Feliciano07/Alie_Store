@@ -91,10 +91,67 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             var cn = database_1.default.db2();
             var sql = 'SELECT * FROM USUARIO WHERE correo = :correo AND clave = :clave  AND status = 1';
-            console.log(req.body);
+            //console.log(req.body);
             yield cn.exec(sql, [req.body.correo, req.body.clave], function (result) {
                 if (result.length > 0) {
                     res.send(result[0]);
+                }
+                else {
+                    res.status(404).json({
+                        status: 'El usuario no existe o no ha sido confirmado'
+                    });
+                }
+            });
+        });
+    }
+    Recuperar_Pass(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            // generador token 
+            var hashCode = function (s) {
+                var h = 0, l = s.length, i = 0;
+                if (l > 0)
+                    while (i < l)
+                        h = (h << 18) - h + s.charCodeAt(i++) | 0;
+                return h;
+            };
+            let hash = hashCode(JSON.stringify(req.body));
+            let clave = hash.toString();
+            var sql = " UPDATE USUARIO SET " +
+                "CLAVE = :clave " +
+                "WHERE CORREO= :correo";
+            yield cn.exec(sql, [clave, req.body.correo], function (result) {
+                if (result == undefined) {
+                    var transport = nodemailer_1.default.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'fernandochajon122@gmail.com',
+                            pass: 'cuentanueva122'
+                        }
+                    });
+                    var mail_option = {
+                        from: 'Fernando Chajon <fernandochajon122@gmail.com',
+                        to: req.body.correo,
+                        subject: 'Recuperacion de Clave',
+                        text: 'Hola ',
+                        html: '<h1>Alie Storage</h1>' +
+                            ' <h3>Es un gusto poder ayuda ' + '</h3> ' +
+                            ' <ul> ' +
+                            ' <li>correo: ' + req.body.correo + '</li> ' +
+                            ' <li>password: ' + clave + '</li> ' +
+                            ' </ul>' +
+                            ' <p>Ingresa al link, para iniciar sesion</p> ' +
+                            ' <a href="http://localhost:4200/login' + req.body.correo + '" class="btn btn-primary stretched-link">Inicar Session</a> ' // cuerpo de texto sin formato
+                    };
+                    transport.sendMail(mail_option, (error, info) => {
+                        if (error) {
+                            res.status(404).json({
+                                status: 'El usuario no existe o no ha sido confirmado'
+                            });
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        res.json({ valor: '1' });
+                    });
                 }
                 else {
                     res.status(404).json({

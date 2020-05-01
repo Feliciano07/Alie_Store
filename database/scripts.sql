@@ -120,3 +120,22 @@ SELECT * FROM USUARIO;
 --*****************************************************************************************
 
 
+-- SCRIPT PARA EL STORE PROCEDURE DE RECUPERAR PASSWORD------------------------
+
+
+    CREATE OR REPLACE PROCEDURE Rec_Pass ( Vcorreo in varchar2,Vpass in varchar2)
+    IS
+    BEGIN
+        UPDATE USUARIO SET 
+        CLAVE = Vpass 
+        WHERE CORREO=Vcorreo;
+    
+        SAVEPOINT recuperacion;
+    END;
+
+    EXECUTE rec_pass('prueba1@hotmail.com','nueva');
+--
+
+
+
+--

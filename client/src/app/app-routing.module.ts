@@ -10,6 +10,10 @@ import { NagivationClienteComponent } from './components/nagivation-cliente/nagi
 
 import { ChatComponent } from './components/chat/chat.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
+import { ListarUserComponent } from './components/listar-user/listar-user.component';
+import { CrearUserComponent } from './components/crear-user/crear-user.component';
 
 const routes: Routes = [
   {
@@ -26,6 +30,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'recuperar',
+    component: RecuperacionComponent
+  },
+  {
     path: 'singUp',
     component: SignUpComponent
   },
@@ -40,6 +48,18 @@ const routes: Routes = [
   {
     path: 'soporte',
     component: ChatComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
+    path: 'admin/listar',
+    component: ListarUserComponent
+  },
+  {
+    path: 'admin/crear',
+    component: CrearUserComponent
   }
 ];
 

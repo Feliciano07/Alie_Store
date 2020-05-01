@@ -27,4 +27,8 @@ export class UsuarioService {
       return this.http.post(`${this.API_URI}/login`, user);
    }
 
+   Cambiar_Pass(correo){
+     return this.http.post(`${this.API_URI}/recuperacion`,  correo);
+   }
+
 }

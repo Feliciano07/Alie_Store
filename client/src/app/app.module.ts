@@ -26,6 +26,13 @@ import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat/chat.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminComponent } from './components/admin/admin.component';
+import { NavigationAdminComponent } from './components/navigation-admin/navigation-admin.component';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
+import { ListarUserComponent } from './components/listar-user/listar-user.component';
+import { CrearUserComponent } from './components/crear-user/crear-user.component';
+import { AdminService } from './services/admin.service';
+import { CargaArchivosService } from './services/carga-archivos.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavigationLoginComponent,
     NagivationClienteComponent,
     ChatComponent,
-    ClienteComponent
+    ClienteComponent,
+    AdminComponent,
+    NavigationAdminComponent,
+    RecuperacionComponent,
+    ListarUserComponent,
+    CrearUserComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +66,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [
     UsuarioService,
-    ChatService
+    ChatService,
+    AdminService,
+    CargaArchivosService
   ],
   bootstrap: [AppComponent]
 })

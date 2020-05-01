@@ -1,0 +1,95 @@
+<app-navigation-admin></app-navigation-admin>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card border-info mb-3">
+        <div class="card-body">
+          <form autocomplete="off">
+
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="nombre" [(ngModel)]="usuario.nombre" placeholder="Nombre" autofocus>
+                </div>
+
+                <div class="col">
+                  <input type="text" class="form-control" name="apellido" [(ngModel)]="usuario.apellido" placeholder="Apellido">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label>Genero</label>
+            </div>
+
+            <div class="form-group">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value1" value="0" [(ngModel)]="check.value1">
+                <label class="form-check-label" for="inlineRadio1">M</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value1" value="1" [(ngModel)]="check.value1">
+                <label class="form-check-label" for="inlineRadio2">F</label>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value2" value="0" [(ngModel)]="checkU.value1">
+                <label class="form-check-label" for="inlineRadio1">Ayuda</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value2" value="1" [(ngModel)]="checkU.value1">
+                <label class="form-check-label" for="inlineRadio2">Admin</label>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <input type="password" class="form-control" name="clave" [(ngModel)]="usuario.clave" placeholder="password">
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" name="correo" [(ngModel)]="usuario.correo" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+              <input type="number" class="form-control" name="telefono" [(ngModel)]="usuario.telefono" placeholder="Phone Number">
+            </div>
+
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es" (change)="onEvent($event)">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Imagen</label>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <input type="date" class="form-control" name="fecha_nacimiento" [(ngModel)]="usuario.fecha_nacimiento" >
+            </div>
+
+            <div class="form-group">
+              <textarea name="direccion" placeholder="Direccion" name="direccion" [(ngModel)]="usuario.direccion" rows="1" class="form-control"></textarea>
+            </div>
+
+            <button class="btn btn-success btn-block" (click)="cargar_Usuario()">
+                Crear
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -21,6 +21,7 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const chatRoutes_1 = __importDefault(require("./routes/chatRoutes"));
 const cargaRoutes_1 = __importDefault(require("./routes/cargaRoutes"));
+const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
 class Server_ND {
     constructor() {
         this.app = express_1.default();
@@ -55,6 +56,7 @@ class Server_ND {
         this.app.use('/api/usuario', userRoutes_1.default);
         this.app.use('/api/chat', chatRoutes_1.default);
         this.app.use('/api/carga', cargaRoutes_1.default);
+        this.app.use('/api/admin', adminRoutes_1.default);
         // end points de carga de foto de usuario
     }
     start() {

@@ -1,0 +1,105 @@
+<app-navigation-admin></app-navigation-admin>
+<br><br>
+
+
+<div class="container">
+  <table class="table">
+
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id Usuario</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Configuraciones</th>
+        <th scope="col">Subir</th>
+        <th scope="col">Degradar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+
+      <tr *ngFor="let item of usuarios">
+        <th scope="row">{{item.ID_USUARIO}}</th>
+        <td>{{item.NOMBRE}}</td>
+        <td>{{item.APELLIDO}}</td>
+        <td>{{item.CORREO}}</td>
+
+        <td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#visualizar" (click)="Obtener(item)">
+            Ver
+            <i class="fa fa-eye"></i>
+          </button>
+
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-primary">Ascender</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning">Degradar</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal============================================== -->
+<div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{updateUser.NOMBRE}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+
+          <div class="row">
+            <div class="col">
+              <label>Nombre</label>
+              <input type="text" class="form-control" name="nombre" [(ngModel)]="updateUser.NOMBRE" >
+            </div>
+
+            <div class="col">
+              <label>Apellido</label>
+              <input type="text" class="form-control" name="apellido" [(ngModel)]="updateUser.APELLIDO" >
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label>Clave</label>
+          <input type="text" class="form-control" name="clave" [(ngModel)]="updateUser.CLAVE" >
+        </div>
+
+        <div class="form-group">
+          <label>Direccion</label>
+          <input type="text" class="form-control" name="direccion" [(ngModel)]="updateUser.DIRECCION" >
+        </div>
+
+        <div class="form-group">
+          <label>telefono</label>
+          <input type="number" class="form-control" name="telefono" [(ngModel)]="updateUser.TELEFONO" >
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Salir</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"  >Eliminar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="CambiarDatos()" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--********************************************************************************-->
+
+

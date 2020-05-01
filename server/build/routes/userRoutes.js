@@ -15,6 +15,7 @@ class UserRoutes {
         // update status user
         this.router.get('/status/:correo', userController_1.userController.UpdateStatus);
         this.router.post('/login', userController_1.userController.Login);
+        this.router.post('/recuperacion', userController_1.userController.Recuperar_Pass);
     }
 }
 const userRoutes = new UserRoutes();
