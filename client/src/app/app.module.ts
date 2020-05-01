@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {NgxCsvParserModule} from 'ngx-csv-parser';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { ListarUserComponent } from './components/listar-user/listar-user.compon
 import { CrearUserComponent } from './components/crear-user/crear-user.component';
 import { AdminService } from './services/admin.service';
 import { CargaArchivosService } from './services/carga-archivos.service';
+import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { CargaArchivosService } from './services/carga-archivos.service';
     NavigationAdminComponent,
     RecuperacionComponent,
     ListarUserComponent,
-    CrearUserComponent
+    CrearUserComponent,
+    CargaClienteComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { CargaArchivosService } from './services/carga-archivos.service';
     }),
     FormsModule,
     HttpClientModule,
-    NgbModule,
+    NgxCsvParserModule
   ],
   providers: [
     UsuarioService,

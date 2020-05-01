@@ -14,6 +14,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 import { ListarUserComponent } from './components/listar-user/listar-user.component';
 import { CrearUserComponent } from './components/crear-user/crear-user.component';
+import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'admin/crear',
     component: CrearUserComponent
+  },
+  {
+    path: 'cargaCliente',
+    component: CargaClienteComponent
   }
 ];
 
