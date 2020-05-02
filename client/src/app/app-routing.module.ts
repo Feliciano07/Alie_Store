@@ -16,6 +16,7 @@ import { ListarUserComponent } from './components/listar-user/listar-user.compon
 import { CrearUserComponent } from './components/crear-user/crear-user.component';
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
+import { ResultadoProductoComponent } from './components/resultado-producto/resultado-producto.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: 'verProductos',
     component: VerProductosComponent
+  },
+  {
+    path: 'busquedad',
+    component: ResultadoProductoComponent
   }
 ];
 

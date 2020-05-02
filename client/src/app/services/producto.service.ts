@@ -12,4 +12,8 @@ export class ProductoService {
   producto_cliente(user){
     return this.http.post(`${this.API_URI}/obtener`, user);
   }
+
+  Search_Producto(data){
+    return this.http.post(`${this.API_URI}/buscar`, data);
+  }
 }

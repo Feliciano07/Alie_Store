@@ -41,5 +41,33 @@ class ProductoController {
             });
         });
     }
+    Search_Producto(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            console.log(req.body);
+            var re = " pr.imagen,pr.descripcion,pr.precio_producto,pr.fecha_publicacion,pr.cantidad_disponible ";
+            var sql = "SELECT " + re +
+                "FROM PRODUCTO pr,CATEGORIA ct " +
+                "WHERE UPPER (pr.descripcion) LIKE UPPER(:producto) " +
+                "UNION " +
+                "SELECT" + re +
+                "FROM PRODUCTO pr, PRODUCTO_CATEGORIA pc, CATEGORIA ct " +
+                "WHERE pr.id_producto=pc.producto AND pc.categoria=ct.id_categoria and UPPER(ct.nombre_categoria) LIKE UPPER(:producto) " +
+                "UNION " +
+                "SELECT " + re +
+                "FROM PRODUCTO pr, COLOR cr, PRODUCTO_COLOR pl " +
+                "WHERE pr.id_producto=pl.producto AND pl.color=cr.id_color AND UPPER(cr.nombre_color) LIKE UPPER( :producto) ";
+            yield cn.exec(sql, [req.body.producto], function (result) {
+                if (result.length > 0) {
+                    res.json(result);
+                }
+                else {
+                    res.json({
+                        text: 'no se encontro producto con: ' + req.body.producto
+                    });
+                }
+            });
+        });
+    }
 }
 exports.productoController = new ProductoController();

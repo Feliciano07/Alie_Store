@@ -36,6 +36,7 @@ import { AdminService } from './services/admin.service';
 import { CargaArchivosService } from './services/carga-archivos.service';
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
+import { ResultadoProductoComponent } from './components/resultado-producto/resultado-producto.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { VerProductosComponent } from './components/ver-productos/ver-productos.
     ListarUserComponent,
     CrearUserComponent,
     CargaClienteComponent,
-    VerProductosComponent
+    VerProductosComponent,
+    ResultadoProductoComponent
   ],
   imports: [
     BrowserModule,

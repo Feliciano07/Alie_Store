@@ -10,6 +10,7 @@ class ProductoRuoter {
     config() {
         this.router.get('/', productoController_1.productoController.producto);
         this.router.post('/obtener', productoController_1.productoController.get_Productos_Cliente);
+        this.router.post('/buscar', productoController_1.productoController.Search_Producto);
     }
 }
 const productoRoutes = new ProductoRuoter();

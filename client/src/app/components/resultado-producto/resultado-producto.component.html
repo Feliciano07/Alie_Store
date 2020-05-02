@@ -1,0 +1,57 @@
+<app-nagivation-cliente></app-nagivation-cliente>
+
+<br>
+
+<div class="row">
+  <div class="col-md-3" *ngFor="let pr of productos">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        {{pr.DESCRIPCION}}
+        <button class="btn btn-danger">
+          <i class="fa fa-store"></i>
+        </button>
+      </div>
+      <img class="card-img-top" [src]="pr.IMAGEN" class="rounded mx-auto d-block" width="70" height="70" alt="Responsive image" >
+      <div class="card-body">
+        <p>Q. {{pr.PRECIO_PRODUCTO}}</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#individual" (click)="Obtener(pr)">
+          Ver Detalles
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal============================================== -->
+<div class="modal fade" id="individual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="card text-center">
+          <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            {{item.DESCRIPCION}}
+          </div>
+          <img class="card-img-top" [src]="item.IMAGEN" class="rounded mx-auto d-block" width="100" height="100" alt="Responsive image" >
+          <div class="card-body">
+            <p>Precio: Q. {{item.PRECIO_PRODUCTO}}</p>
+            <p>Fecha Anuncio: {{item.FECHA_PUBLICACION | date: 'yyyy-MM-dd'}}</p>
+            <p>Disponibles: {{item.CANTIDAD_DISPONIBLE}}</p>
+          </div>
+        </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Salir</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"  >Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--********************************************************************************-->
