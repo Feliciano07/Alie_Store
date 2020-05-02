@@ -15,6 +15,7 @@ import userRoutes from './routes/userRoutes';
 import chatRoutes from './routes/chatRoutes';
 import cargaRoutes from './routes/cargaRoutes';
 import adminRoutes from './routes/adminRoutes';
+import productoRoutes from './routes/productoRouter';
 
 
 
@@ -75,6 +76,7 @@ class Server_ND{
 
         this.app.use('/api/admin',adminRoutes);
 
+        this.app.use('/api/producto',productoRoutes);
         // end points de carga de foto de usuario
     }
 
