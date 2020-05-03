@@ -18,6 +18,19 @@ class AdminRoutes{
         this.router.get('/listar',adminController.Listar_Usuarios);
 
         this.router.post('/update',adminController.UpdateUser);
+
+        this.router.post('/ayuda',adminController.Ayuda_Year);
+
+        this.router.post('/admin',adminController.Admin_Year);
+
+        this.router.post('/cantidad',adminController.Cantidad_Disponible);
+
+        this.router.get('/promedio',adminController.Promedio_Servicios);
+
+        this.router.get('/top',adminController.Top_Clientes);
+
+        this.router.get('/productos',adminController.Todos_Productos);
+
     }
 }
 

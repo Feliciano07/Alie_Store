@@ -1,0 +1,72 @@
+<app-navigation-admin></app-navigation-admin>
+
+<br>
+
+<hr>
+<div class="row">
+    <div class="col-md-3 text-center">
+            <button type="button" class="btn btn-primary" (click)="adminF? adminF =false: adminF =true">
+                    <i class="fas fa-users"></i>
+                     Administradores Sexo Femenino
+            </button>
+    </div>
+    <div class="col-md-3 text-center">
+            <button type="button" class="btn btn-success" (click)="servicioM ? servicioM =false: servicioM =true">
+                    <i class="fas fa-users"></i>
+                     Servicios Sexo Masculino
+            </button>
+    </div>
+    <div class="col-md-3 text-center">
+            <button type="button" class="btn btn-warning" (click)="ayudaP? ayudaP=false: ayudaP =true">
+                    <i class="fas fa-grin-stars"></i>
+                     Promedio Servicios Ayuda
+            </button>
+    </div>
+    <div class="col-md-3 text-center">
+            <button type="button" class="btn btn-danger" (click)="cantidadD? cantidadD=false: cantidadD=true">
+                    <i class="fas fa-chart-bar"></i>
+                     Productos con X cantidad disponible
+            </button>
+    </div>
+
+    <div class="col-md-3 text-center">
+      <button type="button" class="btn btn-dark" (click)="productos? productos=false: productos=true">
+              <i class="fas fa-list"></i>
+               Todos Los Productos
+      </button>
+    </div>
+
+    <div class="col-md-3 text-center">
+      <button type="button" class="btn btn-info" (click)="top? top=false: top=true">
+              <i class="fas fa-star"></i>
+               Top Clientes
+      </button>
+    </div>
+
+
+</div>
+
+<hr>
+<br>
+<div class="row">
+    <ng-container *ngIf="adminF">
+      <app-admin-femenino></app-admin-femenino>
+    </ng-container>
+    <ng-container *ngIf="servicioM">
+      <app-servicio-masculino></app-servicio-masculino>
+    </ng-container>
+    <ng-container *ngIf="ayudaP">
+      <app-ayuda-promedio></app-ayuda-promedio>
+    </ng-container>
+    <ng-container *ngIf="cantidadD">
+      <app-cantidad-disponible></app-cantidad-disponible>
+    </ng-container>
+
+    <ng-container *ngIf="productos">
+      <app-productos></app-productos>
+    </ng-container>
+
+    <ng-container *ngIf="top">
+      <app-top-clientes></app-top-clientes>
+    </ng-container>
+</div>

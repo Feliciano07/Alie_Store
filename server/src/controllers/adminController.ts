@@ -96,6 +96,80 @@ class AdminController{
             }
         })
     }
+
+    public async Ayuda_Year(req: Request, res: Response){
+        var cn= db.db2();
+        var sql = "SELECT * FROM USUARIO "+
+                  "WHERE genero=0 and tipo_usuario=1 and to_char(fecha_nacimiento,'YYYY') > :year ";
+
+        await cn.exec(sql,[req.body.year],function(result: any){
+            res.json(result);
+        })
+    }
+
+    public async Admin_Year(req: Request, res: Response){
+        var cn = db.db2();
+        var sql ="SELECT * FROM USUARIO " +
+                 "WHERE genero=1 and tipo_usuario=0 and to_char(fecha_nacimiento,'YYYY') < :year ";
+        await cn.exec(sql,[req.body.year],function(result: any){
+            res.json(result);
+        })
+    }
+
+    public async Cantidad_Disponible(req: Request, res: Response){
+        var cn = db.db2();
+        var sql = "SELECT * FROM  "+
+                  "PRODUCTO "+
+                  "WHERE cantidad_disponible=:cantidad ";
+
+        await cn.exec(sql,[req.body.cantidad],function(result:any){
+            res.json(result);
+        })
+    }
+
+    public async Promedio_Servicios(req: Request, res: Response){
+        var cn = db.db2();
+        var sql =  "SELECT sr.id_usuario, sr.nombre, sr.correo, AVG(sl.puntuacion) as promedio "+
+                   "FROM USUARIO sr, "+
+                   "SALA sl "+
+                   "WHERE sr.tipo_usuario=1 AND sr.id_usuario=sl.usuario_ayuda "+
+                   "GROUP by sr.id_usuario, sr.nombre, sr.correo "+
+                   "ORDER BY AVG(sl.puntuacion) DESC ";
+        
+        await cn.exec(sql,[],function(result: any){
+            res.json(result);
+        })
+    }
+
+    public async Top_Clientes(req: Request, res: Response){
+        var cn = db.db2();
+        var sql =   "SELECT * FROM ( "+
+                    "SELECT  usr.id_usuario, usr.nombre, usr.correo, COUNT(*) as Total "+
+                    "FROM "+
+                    "USUARIO usr, PRODUCTO pr "+
+                    "WHERE usr.id_usuario=pr.usuario "+
+                    "GROUP BY usr.id_usuario, usr.nombre, usr.correo "+
+                    "ORDER BY COUNT(*) DESC "+
+                    ")"+
+                    " WHERE ROWNUM<4 ";
+
+        await cn.exec(sql,[],function(result:any){
+            res.json(result);
+        })
+    }
+
+    public async Todos_Productos(req: Request, res: Response){
+        var cn = db.db2();
+        var sql =   "SELECT pr.*, ct.* FROM "+
+                    "PRODUCTO pr, "+
+                    "PRODUCTO_CATEGORIA pc, "+
+                    "CATEGORIA ct "+
+                    "WHERE pr.id_producto=pc.producto and pc.categoria=ct.id_categoria";
+
+        await cn.exec(sql,[],function(result: any){
+            res.json(result);
+        })
+    }
 }
 
 

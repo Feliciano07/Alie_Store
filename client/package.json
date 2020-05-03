@@ -21,16 +21,22 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@progress/kendo-angular-pdf-export": "^2.0.3",
     "bootstrap": "^4.4.0",
     "convert-csv-to-json": "0.0.15",
     "ngrx-toastr": "^2.2.9",
     "ngx-cookie-service": "^3.0.4",
     "ngx-csv-parser": "0.0.2",
     "ngx-toastr": "^12.0.1",
+    "pdfmake": "^0.1.65",
+    "pdfmake-wrapper": "^2.0.0",
     "rxjs": "~6.5.4",
     "socket.io-client": "^2.3.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@progress/kendo-angular-common": "^1.2.2",
+    "@progress/kendo-drawing": "^1.2.0",
+    "@progress/kendo-theme-default": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.0",

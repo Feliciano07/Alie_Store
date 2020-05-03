@@ -1,0 +1,66 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card-body">
+
+
+        <button type="button" class="btn btn-success btn-block" (click)="Buscar()" >
+          Buscar
+          <i class="fa fa-search"></i>
+        </button>
+
+        <button type="button" class="btn btn-danger btn-block" (click)="reporte.saveAs('allProductos.pdf')">
+          Descargar Pdf
+          <i class="fa fa-download"></i>
+        </button>
+      </div>
+
+
+    </div>
+
+    <div class="col-8">
+      <div class="card text center">
+
+
+
+      <kendo-pdf-export #reporte>
+
+        <br>
+        <h1 style="text-align: center;">
+        Reporte de Todos los Productos en el Sistema
+        </h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id Producto</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Precio Producto</th>
+              <th scope="col">Fecha Publicacion</th>
+              <th scope="col">Cantidad Disponible</th>
+              <th scope="col">Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listProducto">
+              <th scope="row">{{item.ID_PRODUCTO}}</th>
+              <td>{{item.DESCRIPCION}}</td>
+              <td>{{item.PRECIO_PRODUCTO }}</td>
+              <td>{{item.FECHA_PUBLICACION | date: 'yyyy-MM-dd'}}</td>
+              <td>{{item.CANTIDAD_DISPONIBLE}}</td>
+              <td>{{item.NOMBRE_CATEGORIA}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </kendo-pdf-export>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+

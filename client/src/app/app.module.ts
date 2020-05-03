@@ -8,6 +8,10 @@ import {ToastrModule} from 'ngx-toastr';
 import {NgxCsvParserModule} from 'ngx-csv-parser';
 
 
+
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -37,6 +41,15 @@ import { CargaArchivosService } from './services/carga-archivos.service';
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
 import { ResultadoProductoComponent } from './components/resultado-producto/resultado-producto.component';
+import { ReportesComponent } from './components/Reportes/reportes/reportes.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { AyudaPromedioComponent } from './components/Reportes/ayuda-promedio/ayuda-promedio.component';
+import { ServicioMasculinoComponent } from './components/Reportes/servicio-masculino/servicio-masculino.component';
+import { AdminFemeninoComponent } from './components/Reportes/admin-femenino/admin-femenino.component';
+import { TopClientesComponent } from './components/Reportes/top-clientes/top-clientes.component';
+import { ProductosComponent } from './components/Reportes/productos/productos.component';
+import { CantidadDisponibleComponent } from './components/Reportes/cantidad-disponible/cantidad-disponible.component';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +69,14 @@ import { ResultadoProductoComponent } from './components/resultado-producto/resu
     CrearUserComponent,
     CargaClienteComponent,
     VerProductosComponent,
-    ResultadoProductoComponent
+    ResultadoProductoComponent,
+    ReportesComponent,
+    AyudaPromedioComponent,
+    ServicioMasculinoComponent,
+    AdminFemeninoComponent,
+    TopClientesComponent,
+    ProductosComponent,
+    CantidadDisponibleComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +89,8 @@ import { ResultadoProductoComponent } from './components/resultado-producto/resu
     }),
     FormsModule,
     HttpClientModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    PDFExportModule,
   ],
   providers: [
     UsuarioService,

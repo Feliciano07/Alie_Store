@@ -25,4 +25,28 @@ export class AdminService {
   Update(user){
     return this.http.post(`${this.API_URI}/update`, user);
   }
+
+  Ayuda_Year(data){
+    return this.http.post(`${this.API_URI}/ayuda`, data);
+  }
+
+  Admin_Year(data){
+    return this.http.post(`${this.API_URI}/admin`, data);
+  }
+
+  Disponibles(data){
+    return this.http.post(`${this.API_URI}/cantidad`, data);
+  }
+
+  Promedio(){
+    return this.http.get(`${this.API_URI}/promedio`);
+  }
+
+  Top_Clientes(){
+    return this.http.get(`${this.API_URI}/top`);
+  }
+
+  All_Productos(){
+    return this.http.get(`${this.API_URI}/productos`);
+  }
 }

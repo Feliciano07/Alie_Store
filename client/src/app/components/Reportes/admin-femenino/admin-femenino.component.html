@@ -1,0 +1,70 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card-body">
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Ingrese el año Administrador Femenino</label>
+          <input type="number" class="form-control" name="yerAdmin" [(ngModel)]="yerAdmin" >
+        </div>
+
+        <button type="button" class="btn btn-success btn-block" (click)="Buscar()" >
+          Buscar
+          <i class="fa fa-search"></i>
+        </button>
+
+        <button type="button" class="btn btn-danger btn-block" (click)="reporte.saveAs('Admin.pdf')">
+          Descargar Pdf
+          <i class="fa fa-download"></i>
+        </button>
+      </div>
+
+
+    </div>
+
+    <div class="col-8">
+      <div class="card text center">
+
+
+
+      <kendo-pdf-export #reporte>
+
+        <br>
+        <h1 style="text-align: center;">
+        Reporte de Administradores Que Nacieron antes de {{yerAdmin}}
+        </h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id Usuario</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Fecha Nacimiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listAdmin">
+              <th scope="row">{{item.ID_USUARIO}}</th>
+              <td>{{item.NOMBRE}}</td>
+              <td>{{item.APELLIDO}}</td>
+              <td>{{item.CORREO}}</td>
+              <td>{{item.TELEFONO}}</td>
+              <td>{{item.DIRECCION}}</td>
+              <td>{{item.FECHA_NACIMIENTO | date: 'yyyy-MM-dd'}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </kendo-pdf-export>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

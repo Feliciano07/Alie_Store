@@ -17,6 +17,7 @@ import { CrearUserComponent } from './components/crear-user/crear-user.component
 import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.component';
 import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
 import { ResultadoProductoComponent } from './components/resultado-producto/resultado-producto.component';
+import { ReportesComponent } from './components/Reportes/reportes/reportes.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'admin/crear',
     component: CrearUserComponent
+  },
+  {
+    path: 'admin/reportes',
+    component: ReportesComponent
   },
   {
     path: 'cargaCliente',

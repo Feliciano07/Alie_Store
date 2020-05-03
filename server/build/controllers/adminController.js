@@ -105,5 +105,80 @@ class AdminController {
             });
         });
     }
+    Ayuda_Year(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT * FROM USUARIO " +
+                "WHERE genero=0 and tipo_usuario=1 and to_char(fecha_nacimiento,'YYYY') > :year ";
+            yield cn.exec(sql, [req.body.year], function (result) {
+                res.json(result);
+            });
+        });
+    }
+    Admin_Year(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT * FROM USUARIO " +
+                "WHERE genero=1 and tipo_usuario=0 and to_char(fecha_nacimiento,'YYYY') < :year ";
+            yield cn.exec(sql, [req.body.year], function (result) {
+                res.json(result);
+            });
+        });
+    }
+    Cantidad_Disponible(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT * FROM  " +
+                "PRODUCTO " +
+                "WHERE cantidad_disponible=:cantidad ";
+            yield cn.exec(sql, [req.body.cantidad], function (result) {
+                res.json(result);
+            });
+        });
+    }
+    Promedio_Servicios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT sr.id_usuario, sr.nombre, sr.correo, AVG(sl.puntuacion) as promedio " +
+                "FROM USUARIO sr, " +
+                "SALA sl " +
+                "WHERE sr.tipo_usuario=1 AND sr.id_usuario=sl.usuario_ayuda " +
+                "GROUP by sr.id_usuario, sr.nombre, sr.correo " +
+                "ORDER BY AVG(sl.puntuacion) DESC ";
+            yield cn.exec(sql, [], function (result) {
+                res.json(result);
+            });
+        });
+    }
+    Top_Clientes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT * FROM ( " +
+                "SELECT  usr.id_usuario, usr.nombre, usr.correo, COUNT(*) as Total " +
+                "FROM " +
+                "USUARIO usr, PRODUCTO pr " +
+                "WHERE usr.id_usuario=pr.usuario " +
+                "GROUP BY usr.id_usuario, usr.nombre, usr.correo " +
+                "ORDER BY COUNT(*) DESC " +
+                ")" +
+                " WHERE ROWNUM<4 ";
+            yield cn.exec(sql, [], function (result) {
+                res.json(result);
+            });
+        });
+    }
+    Todos_Productos(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "SELECT pr.*, ct.* FROM " +
+                "PRODUCTO pr, " +
+                "PRODUCTO_CATEGORIA pc, " +
+                "CATEGORIA ct " +
+                "WHERE pr.id_producto=pc.producto and pc.categoria=ct.id_categoria";
+            yield cn.exec(sql, [], function (result) {
+                res.json(result);
+            });
+        });
+    }
 }
 exports.adminController = new AdminController();
