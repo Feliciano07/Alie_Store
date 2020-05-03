@@ -49,6 +49,7 @@ import { AdminFemeninoComponent } from './components/Reportes/admin-femenino/adm
 import { TopClientesComponent } from './components/Reportes/top-clientes/top-clientes.component';
 import { ProductosComponent } from './components/Reportes/productos/productos.component';
 import { CantidadDisponibleComponent } from './components/Reportes/cantidad-disponible/cantidad-disponible.component';
+import { PaginaDenegadaComponent } from './components/pagina-denegada/pagina-denegada.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { CantidadDisponibleComponent } from './components/Reportes/cantidad-disp
     AdminFemeninoComponent,
     TopClientesComponent,
     ProductosComponent,
-    CantidadDisponibleComponent
+    CantidadDisponibleComponent,
+    PaginaDenegadaComponent
   ],
   imports: [
     BrowserModule,

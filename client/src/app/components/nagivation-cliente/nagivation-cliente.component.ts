@@ -6,6 +6,7 @@ import {ProductoService} from '../../services/producto.service';
 
 
 import {ToastrService} from 'ngx-toastr';
+import { isNullOrUndefined } from 'util';
 
 
 
@@ -26,8 +27,24 @@ export class NagivationClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userSession = JSON.parse(sessionStorage.getItem('user'));
+
+    this.Verificar_Cliente();
+
     this.producto = '';
+  }
+
+  Verificar_Cliente(){
+    const dato = localStorage.getItem('user');
+    if (!isNullOrUndefined(dato)){
+        const user = JSON.parse(dato);
+        if (user.TIPO_USUARIO === 1 && user.TIPO_USUARIO === 2){
+            this.userSession = user;
+        }else{
+          this.router.navigate(['/error']);
+        }
+    }else{
+      this.router.navigate(['home']);
+    }
   }
 
   Search_Producto(): void{

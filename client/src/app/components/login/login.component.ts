@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {UsuarioService} from '../../services/usuario.service';
 
 import {ToastrService} from 'ngx-toastr';
+import { isNullOrUndefined } from 'util';
 
 
 
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.Set_User();
   }
 
   SearchUser(): void{
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
       res => {
           // this.tosastr.success('Session Iniciada', 'Informacion');
           this.userLogin = res;
-          sessionStorage.setItem('user', JSON.stringify(this.userLogin));
+          localStorage.setItem('user', JSON.stringify(this.userLogin));
           if  (this.userLogin.TIPO_USUARIO === 0){
             this.router.navigate(['/admin']);
           }else{
@@ -55,5 +57,48 @@ export class LoginComponent implements OnInit {
   Recuperar(){
     this.router.navigate(['/recuperar']);
   }
+
+  Set_User(){
+    const dato = localStorage.getItem('user');
+    if (!isNullOrUndefined(dato)){
+        const user = JSON.parse(dato);
+        if (user.TIPO_USUARIO === 0){
+          this.router.navigate(['/admin']);
+        }else{
+          this.router.navigate(['/cliente']);
+        }
+    }
+  }
+
+ /*
+  Verificar_Cliente(){
+    const dato = localStorage.getItem('user');
+    if (!isNullOrUndefined(dato)){
+        const user = JSON.parse(dato);
+        if (user.TIPO_USUARIO === 1 && user.TIPO_USUARIO === 2){
+
+        }else{
+          this.router.navigate(['/error']);
+        }
+    }else{
+      this.router.navigate(['home']);
+    }
+  }
+  */
+
+ /*
+  Verificar_Admin(){
+    const dato = localStorage.getItem('user');
+    if (!isNullOrUndefined(dato)){
+        const user = JSON.parse(dato);
+        if (user.TIPO_USUARIO === 0){
+        }else{
+          this.router.navigate(['/error']);
+        }
+    }else{
+      this.router.navigate(['home']);
+    }
+  }
+  */
 
 }

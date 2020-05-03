@@ -18,6 +18,7 @@ import { CargaClienteComponent } from './components/carga-cliente/carga-cliente.
 import { VerProductosComponent } from './components/ver-productos/ver-productos.component';
 import { ResultadoProductoComponent } from './components/resultado-producto/resultado-producto.component';
 import { ReportesComponent } from './components/Reportes/reportes/reportes.component';
+import { PaginaDenegadaComponent } from './components/pagina-denegada/pagina-denegada.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'busquedad',
     component: ResultadoProductoComponent
+  },
+  {
+    path: 'error',
+    component: PaginaDenegadaComponent
   }
 ];
 
