@@ -3,8 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 
 
+
+
 import {AdminService} from '../../services/admin.service';
 import { Check } from 'src/app/models/Usuario';
+
 
 @Component({
   selector: 'app-listar-user',
@@ -12,6 +15,8 @@ import { Check } from 'src/app/models/Usuario';
   styleUrls: ['./listar-user.component.css']
 })
 export class ListarUserComponent implements OnInit{
+
+
 
   public usuarios: any = []; // arreglo de usuarios existentes
 
@@ -42,7 +47,6 @@ export class ListarUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.LoadUser();
   }
 
 
@@ -152,7 +156,7 @@ export class ListarUserComponent implements OnInit{
     this.adminService.Update(this.updateUser).subscribe(
       res => {
         this.toast.success('Usuario Modificado', 'Success');
-        this.ngOnInit();
+        this.LoadUser();
       },
       err => {
         this.toast.error('No se logro modificar el usuario', 'Error');
