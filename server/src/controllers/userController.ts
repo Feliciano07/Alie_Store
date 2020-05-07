@@ -86,6 +86,7 @@ class UserController{
      */
     public async Login(req: Request, res: Response) {
         var cn =db.db2();
+        console.log(req.body);
         var sql = 'SELECT * FROM USUARIO WHERE correo = :correo AND clave = :clave  AND status = 1';
         //console.log(req.body);
         await cn.exec(sql,[req.body.correo,req.body.clave],function(result: any){

@@ -15,7 +15,11 @@ class ProductoRuoter{
 
         this.router.post('/obtener',productoController.get_Productos_Cliente);
 
+        this.router.post('/appObtener',productoController.Get_Productos_App);
+
         this.router.post('/buscar',productoController.Search_Producto);
+
+        this.router.post('/appBuscar',productoController.Search_App);
     }
 }
 

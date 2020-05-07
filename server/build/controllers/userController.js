@@ -90,6 +90,7 @@ class UserController {
     Login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             var cn = database_1.default.db2();
+            console.log(req.body);
             var sql = 'SELECT * FROM USUARIO WHERE correo = :correo AND clave = :clave  AND status = 1';
             //console.log(req.body);
             yield cn.exec(sql, [req.body.correo, req.body.clave], function (result) {
