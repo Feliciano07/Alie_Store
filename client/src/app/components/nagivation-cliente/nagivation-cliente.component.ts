@@ -37,7 +37,7 @@ export class NagivationClienteComponent implements OnInit {
     const dato = localStorage.getItem('user');
     if (!isNullOrUndefined(dato)){
         const user = JSON.parse(dato);
-        if (user.TIPO_USUARIO === 1 && user.TIPO_USUARIO === 2){
+        if (user.TIPO_USUARIO === 1 || user.TIPO_USUARIO === 2){
             this.userSession = user;
         }else{
           this.router.navigate(['/error']);

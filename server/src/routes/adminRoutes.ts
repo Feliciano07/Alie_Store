@@ -31,6 +31,10 @@ class AdminRoutes{
 
         this.router.get('/productos',adminController.Todos_Productos);
 
+        this.router.post('/asc',adminController.Ascender);
+
+        this.router.post('/desc',adminController.Descender);
+
     }
 }
 

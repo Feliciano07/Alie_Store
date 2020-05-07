@@ -49,4 +49,12 @@ export class AdminService {
   All_Productos(){
     return this.http.get(`${this.API_URI}/productos`);
   }
+
+  Ascender(data){
+    return this.http.post(`${this.API_URI}/asc`, data);
+  }
+
+  Descender(data){
+    return this.http.post(`${this.API_URI}/desc`, data);
+  }
 }

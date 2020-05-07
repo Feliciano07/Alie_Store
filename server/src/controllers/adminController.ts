@@ -170,6 +170,40 @@ class AdminController{
             res.json(result);
         })
     }
+
+    public async Ascender(req: Request, res: Response){
+        var cn = db.db2();
+
+        var sql = "BEGIN " +
+                  "ASCENDER_USER(:id_usuario ,:tipo_usuario, :razon); " +
+                  "END;";
+        await cn.exec(sql,[req.body.id_usuario, req.body.tipo_usuario, req.body.razon],function(result: any){
+            if(result == undefined){
+                res.json({text: 'ascendido' });
+            }else{
+                res.status(404).json({
+                    status: 'Error Oracle'
+                });
+            }
+        });
+    }
+
+    public async Descender(req: Request, res: Response){
+        var cn = db.db2();
+
+        var sql = "BEGIN " +
+                  "DESCENDER_USER(:id_usuario ,:tipo_usuario, :razon); " +
+                  "END;";
+        await cn.exec(sql,[req.body.id_usuario, req.body.tipo_usuario, req.body.razon],function(result: any){
+            if(result == undefined){
+                res.json({text: 'descendido'});
+            }else{
+                res.status(404).json({
+                    status: 'Error Oracle'
+                });
+            }
+        });
+    }
 }
 
 

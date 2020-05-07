@@ -18,6 +18,8 @@ class AdminRoutes {
         this.router.get('/promedio', adminController_1.adminController.Promedio_Servicios);
         this.router.get('/top', adminController_1.adminController.Top_Clientes);
         this.router.get('/productos', adminController_1.adminController.Todos_Productos);
+        this.router.post('/asc', adminController_1.adminController.Ascender);
+        this.router.post('/desc', adminController_1.adminController.Descender);
     }
 }
 const adminRoutes = new AdminRoutes();

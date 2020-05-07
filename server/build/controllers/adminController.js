@@ -180,5 +180,41 @@ class AdminController {
             });
         });
     }
+    Ascender(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "BEGIN " +
+                "ASCENDER_USER(:id_usuario ,:tipo_usuario, :razon); " +
+                "END;";
+            yield cn.exec(sql, [req.body.id_usuario, req.body.tipo_usuario, req.body.razon], function (result) {
+                if (result == undefined) {
+                    res.json({ text: 'ascendido' });
+                }
+                else {
+                    res.status(404).json({
+                        status: 'Error Oracle'
+                    });
+                }
+            });
+        });
+    }
+    Descender(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var cn = database_1.default.db2();
+            var sql = "BEGIN " +
+                "DESCENDER_USER(:id_usuario ,:tipo_usuario, :razon); " +
+                "END;";
+            yield cn.exec(sql, [req.body.id_usuario, req.body.tipo_usuario, req.body.razon], function (result) {
+                if (result == undefined) {
+                    res.json({ text: 'descendido' });
+                }
+                else {
+                    res.status(404).json({
+                        status: 'Error Oracle'
+                    });
+                }
+            });
+        });
+    }
 }
 exports.adminController = new AdminController();

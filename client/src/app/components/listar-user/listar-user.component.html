@@ -35,10 +35,16 @@
         </td>
 
         <td>
-          <button type="button" class="btn btn-primary">Ascender</button>
+          <button type="button" class="btn btn-success" (click)="Obtener_Asc(item)" data-toggle="modal" data-target="#asc" >
+            Ascender
+            <i class="fa fa-arrow-circle-up"></i>
+          </button>
         </td>
         <td>
-          <button type="button" class="btn btn-warning">Degradar</button>
+          <button type="button" class="btn btn-warning" (click)="Obtener_Desc(item)" data-toggle="modal" data-target="#asc"  >
+            Descender
+            <i class="fa fa-arrow-circle-down"></i>
+          </button>
         </td>
       </tr>
 
@@ -101,5 +107,50 @@
   </div>
 </div>
 <!--********************************************************************************-->
+
+
+<div class="modal fade" id="asc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{opciones.texto}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-group">
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="value1" value="0" [(ngModel)]="check.value1">
+            <label class="form-check-label" for="inlineRadio1">Admin</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="value1" value="1" [(ngModel)]="check.value1">
+            <label class="form-check-label" for="inlineRadio2">Ayuda</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="value1" value="2" [(ngModel)]="check.value1">
+            <label class="form-check-label" for="inlineRadio2">Cliente</label>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label>Escriba las razones</label>
+          <textarea name="razon"  rows="3" class="form-control" [(ngModel)]="razon"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-primary" (click)="Validaciones()" data-dismiss="modal" [disabled]= "opciones.disable"  >{{opciones.texto_btn}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 

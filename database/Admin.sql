@@ -64,5 +64,78 @@
 
 -- 
 
+-- script ascender a un usuario 
+
+    CREATE OR REPLACE PROCEDURE ASCENDER_USER(
+        p_id_usuario in INTEGER,
+        p_tipo_usuario in INTEGER,
+        p_razon in VARCHAR2
+    )
+    IS 
+    BEGIN
+
+        IF(p_tipo_usuario=0)
+            THEN 
+
+                UPDATE USUARIO 
+                SET tipo_usuario=p_tipo_usuario
+                WHERE id_usuario=p_id_usuario;
+
+                INSERT INTO BITACORA(texto) VALUES('Se Ascendio a admin al usuario: '|| p_id_usuario || ' por:' || p_razon);
+        ELSE
+
+                UPDATE USUARIO 
+                SET tipo_usuario=p_tipo_usuario
+                WHERE id_usuario=p_id_usuario;
+
+                INSERT INTO BITACORA(texto) VALUES('Se Ascendio a ayuda al usuario: '|| p_id_usuario || ' por:' || p_razon);
+        END IF;
+
+    END;
+    /
+
+    BEGIN
+        ASCENDER_USER(5,0,'Por su contribucion al sistema');
+    END;
+
+-- 
 
 
+
+-- scrip descender a un usuario 
+
+    CREATE OR REPLACE PROCEDURE DESCENDER_USER(
+        p_id_usuario in INTEGER,
+        p_tipo_usuario in INTEGER,
+        p_razon in VARCHAR2
+    )
+    IS 
+    BEGIN
+
+        IF(p_tipo_usuario=1)
+            THEN 
+
+                UPDATE USUARIO 
+                SET tipo_usuario=p_tipo_usuario
+                WHERE id_usuario=p_id_usuario;
+
+                INSERT INTO BITACORA(texto) VALUES('Se descendio a ayuda al usuario: '|| p_id_usuario || ' por:' || p_razon);
+        ELSE
+
+                UPDATE USUARIO 
+                SET tipo_usuario=p_tipo_usuario
+                WHERE id_usuario=p_id_usuario;
+
+                INSERT INTO BITACORA(texto) VALUES('Se descendio a usuario al usuario: '|| p_id_usuario || ' por:' || p_razon);
+        END IF;
+
+    END;
+    /
+
+    -- ejecucion
+    BEGIN
+        DESCENDER_USER(21,2,'Por no ayudar');
+    END;
+
+--
+    
