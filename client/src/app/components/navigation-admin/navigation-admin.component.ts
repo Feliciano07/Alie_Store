@@ -33,4 +33,9 @@ export class NavigationAdminComponent implements OnInit {
     }
   }
 
+  Salir(){
+    localStorage.clear();
+    this.router.navigate(['/home']);
+  }
+
 }

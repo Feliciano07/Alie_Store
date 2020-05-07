@@ -62,7 +62,7 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('user'));
 
 
     const idenUsuario = {

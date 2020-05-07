@@ -138,9 +138,9 @@ export class SignUpComponent implements OnInit {
 
   Define_Genero(): void{
     if (this.check.value1 === '0') {
-      this.usuario.genero = 0;
+      this.usuario.genero = 0; // masculino
     }else{
-      this.usuario.genero = 1;
+      this.usuario.genero = 1; // femenino
     }
   }
 

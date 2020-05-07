@@ -47,6 +47,11 @@ export class NagivationClienteComponent implements OnInit {
     }
   }
 
+  Salir(){
+    localStorage.clear();
+    this.router.navigate(['/home']);
+  }
+
   Search_Producto(): void{
       if (this.producto !== ''){
           const data = {

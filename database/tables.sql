@@ -34,7 +34,7 @@ CREATE TABLE USUARIO (
     status                        INTEGER DEFAULT 0 NOT NULL ,
     tipo_usuario                  INTEGER NOT NULL,
     CONSTRAINT usuario_pk PRIMARY KEY(id_usuario),
-    CONSTRAINT usuario_fk FOREIGN KEY(tipo_usuario) REFERENCES TIPO_USUARIO(id_tipo_usuario)
+    CONSTRAINT usuario_fk FOREIGN KEY(tipo_usuario) REFERENCES TIPO_USUARIO(id_tipo_usuario) ON DELETE CASCADE
 );
 
 
@@ -67,8 +67,8 @@ CREATE TABLE SALA (
     usuario_cliente INTEGER not NULL,
     usuario_ayuda   INTEGER NOT NULL,
     CONSTRAINT sala_pk PRIMARY KEY (id_sala),
-    CONSTRAINT usuario_fk1 FOREIGN KEY(usuario_cliente) REFERENCES USUARIO(id_usuario),
-    CONSTRAINT usuario_fk2 FOREIGN KEY(usuario_ayuda) REFERENCES USUARIO(id_usuario)
+    CONSTRAINT usuario_fk1 FOREIGN KEY(usuario_cliente) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE,
+    CONSTRAINT usuario_fk2 FOREIGN KEY(usuario_ayuda) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE
 );
 
 --Describe SALA;
@@ -105,8 +105,8 @@ CREATE TABLE MENSAJE (
     sala                INTEGER NOT NULL,
     usuario             INTEGER NOT NULL,
     CONSTRAINT mensaje_pk PRIMARY KEY (id_mensaje),
-    CONSTRAINT m_sala_fk FOREIGN KEY(sala) REFERENCES SALA(id_sala),
-    CONSTRAINT m_usuario_fk FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario)
+    CONSTRAINT m_sala_fk FOREIGN KEY(sala) REFERENCES SALA(id_sala) ON DELETE CASCADE,
+    CONSTRAINT m_usuario_fk FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE
 );
 
 -- Sequencia de mensajes
@@ -137,7 +137,7 @@ CREATE TABLE MENSAJE (
         cantidad_disponible INTEGER NOT NULL,
         usuario INTEGER NOT NULL,
         CONSTRAINT producto_pk PRIMARY KEY(id_producto),
-        CONSTRAINT usuario_fk3 FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario)
+        CONSTRAINT usuario_fk3 FOREIGN KEY(usuario) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE
     );
 
 
@@ -182,8 +182,8 @@ CREATE TABLE MENSAJE (
         producto INTEGER NOT NULL,
         color INTEGER NOT NULL,
         CONSTRAINT producto_color_pk PRIMARY KEY(id_producto_color),
-        CONSTRAINT producto_fk1 FOREIGN KEY(producto) REFERENCES PRODUCTO(id_producto),
-        CONSTRAINT color_fk FOREIGN KEY(color) REFERENCES COLOR(id_color)
+        CONSTRAINT producto_fk1 FOREIGN KEY(producto) REFERENCES PRODUCTO(id_producto) ON DELETE CASCADE,
+        CONSTRAINT color_fk FOREIGN KEY(color) REFERENCES COLOR(id_color) on DELETE CASCADE
     );
 
     --  CREACION DE LA SEQUENCIA DE COLORES Y PRODUCTOS 
@@ -225,8 +225,8 @@ CREATE TABLE MENSAJE (
         producto INTEGER NOT NULL,
         categoria INTEGER NOT NULL,
         CONSTRAINT producto_categoria_pk PRIMARY KEY(id_producto_categoria),
-        CONSTRAINT producto_fk2 FOREIGN KEY(producto) REFERENCES PRODUCTO(id_producto),
-        CONSTRAINT categoria_fk1 FOREIGN KEY(categoria) REFERENCES CATEGORIA(id_categoria)
+        CONSTRAINT producto_fk2 FOREIGN KEY(producto) REFERENCES PRODUCTO(id_producto) ON DELETE CASCADE,
+        CONSTRAINT categoria_fk1 FOREIGN KEY(categoria) REFERENCES CATEGORIA(id_categoria) ON DELETE CASCADE
     );
 
     -- CREACION DE LA SEQUENCIA DE PRODUCTO  CATEGORIA 

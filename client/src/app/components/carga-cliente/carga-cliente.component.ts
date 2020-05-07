@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 
+
+
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { NgxCSVParserError } from 'ngx-csv-parser';
 
 import {CargaArchivosService} from '../../services/carga-archivos.service';
+import { isNullOrUndefined } from 'util';
 
 
 @Component({
@@ -22,8 +25,10 @@ export class CargaClienteComponent implements OnInit {
   constructor(private ngxCsvParser: NgxCsvParser, private toast: ToastrService, private cargaService: CargaArchivosService) { }
 
   ngOnInit(): void {
-    this.userSession = JSON.parse(sessionStorage.getItem('user'));
+    this.userSession = JSON.parse(localStorage.getItem('user'));
   }
+
+
 
   onEvent(e){
     const files = e.target.files;

@@ -7,14 +7,19 @@ SELECT * FROM TIPO_USUARIO;
 
 INSERT INTO USUARIO(nombre,apellido,clave,correo,telefono,foto,fecha_nacimiento,
 direccion,credito,ganancia,clase_cliente,genero,tipo_usuario)
-VALUES('fernando','chajon','1234','fernando@hotmail.com',42719347,'url.com',TO_DATE('18/01/1998','dd/mm/yyyy'),
+VALUES('Admin','Admin','admin','fernando1@hotmail.com',42719347,'url.com',TO_DATE('1998-01-18','YYYY-MM-DD'),
 'direccion',100,0,0,0,0);
 
 
 INSERT INTO USUARIO(nombre,apellido,clave,correo,telefono,foto,fecha_nacimiento,
 direccion,credito,ganancia,clase_cliente,genero,tipo_usuario)
-VALUES('Feliciano','chajon','1234','fernando07@hotmail.com',42719347,'url.com',TO_DATE('18/01/1998','dd/mm/yyyy'),
+VALUES('Ayuda','Ayuda','ayuda','fernando2@hotmail.com',42719347,'url.com',TO_DATE('1998-01-18','YYYY-MM-DD'),
 'direccion',100,0,0,0,1);
+
+INSERT INTO USUARIO(nombre,apellido,clave,correo,telefono,foto,fecha_nacimiento,
+direccion,credito,ganancia,clase_cliente,genero,tipo_usuario)
+VALUES('User1','User1','ayuda','user1@hotmail.com',42719347,'http://localhost:8080/user1.png',TO_DATE('1998-01-18','YYYY-MM-DD'),
+'direccion',100,0,0,0,2);
 
 
 
